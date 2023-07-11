@@ -1,5 +1,11 @@
-[build]
-  functions = "functions"
+[functions]
+  external_node_modules = ["express","serverless-http"]
+  node_bundler = "esbuild"
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
 
-[dev]
-  publish = "dist"
+  [build]
+  functions = "./.netlify/functions/"
